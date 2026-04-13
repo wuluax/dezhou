@@ -4,6 +4,8 @@
 
 🔗 **在线体验**：[dezhou.wulua.top](https://dezhou.wulua.top/)
 
+![预览截图](dezhou.png)
+
 ## 功能特性
 
 - **玩家管理** — 添加/删除玩家，双击行内编辑姓名和筹码，拖拽调整顺序
