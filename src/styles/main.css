@@ -1,0 +1,302 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans SC', sans-serif;
+  }
+  body {
+    @apply bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200/60 dark:border-gray-700/60;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium
+           transition-all duration-200 cursor-pointer select-none active:scale-[0.97];
+  }
+  .btn-primary {
+    @apply btn bg-blue-500 text-white hover:bg-blue-600 shadow-sm shadow-blue-500/20;
+  }
+  .btn-danger {
+    @apply btn bg-red-500 text-white hover:bg-red-600 shadow-sm shadow-red-500/20;
+  }
+  .btn-ghost {
+    @apply btn bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300
+           hover:bg-gray-200 dark:hover:bg-gray-600;
+  }
+  .input {
+    @apply w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-600
+           bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+           outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500
+           transition-all duration-200 text-sm;
+  }
+  .sidebar {
+    @apply flex flex-col h-full overflow-hidden;
+  }
+  .sidebar-title {
+    @apply text-base font-bold flex items-center gap-2;
+  }
+  .sidebar-panel {
+    @apply p-4 bg-white/50 dark:bg-gray-900/50 border-gray-200 dark:border-gray-800 transition-colors duration-300;
+  }
+  .section-title {
+    @apply text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-1.5;
+  }
+  .action-btn {
+    @apply flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium cursor-pointer
+           bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700
+           text-gray-700 dark:text-gray-300 transition-all duration-200 select-none active:scale-[0.97];
+  }
+  .theme-active {
+    @apply ring-2 ring-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { border-radius: 9999px; background: rgba(0, 0, 0, 0.12); }
+.dark ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); }
+
+/* ═══════════════════════════════════════════
+   Responsive: Panel layout
+   ═══════════════════════════════════════════ */
+.panel-section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* On desktop (lg+), force all panels visible regardless of v-show */
+@media (min-width: 1024px) {
+  .panel-section {
+    display: flex !important;
+    flex-direction: column;
+  }
+}
+
+/* Mobile tab bar iOS safe area */
+.mobile-tabbar {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Toast progress bar animation */
+@keyframes toast-progress {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+/* ═══════════════════════════════════════════
+   Theme: Cyberpunk
+   ═══════════════════════════════════════════ */
+html.theme-cyberpunk body {
+  background-color: #07020d;
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.025) 1px, transparent 1px);
+  background-size: 50px 50px;
+  color: #d8ccf0;
+}
+
+html.theme-cyberpunk .sidebar-panel {
+  background: rgba(10, 3, 22, 0.75);
+  border-color: rgba(0, 240, 255, 0.1);
+}
+
+html.theme-cyberpunk .card {
+  background: rgba(12, 4, 28, 0.92);
+  border-color: rgba(0, 240, 255, 0.12);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.04), 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+html.theme-cyberpunk .action-btn {
+  background: rgba(0, 240, 255, 0.06);
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  color: #b8e8f0;
+}
+html.theme-cyberpunk .action-btn:hover {
+  background: rgba(0, 240, 255, 0.12);
+  border-color: rgba(0, 240, 255, 0.25);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.08);
+}
+
+html.theme-cyberpunk .theme-active {
+  background: rgba(0, 240, 255, 0.1);
+  color: #00f0ff;
+  ring-color: #00f0ff;
+  --tw-ring-color: #00f0ff;
+}
+
+html.theme-cyberpunk .btn-primary {
+  background: linear-gradient(135deg, #00c8d4, #0090ff);
+  box-shadow: 0 0 18px rgba(0, 240, 255, 0.25);
+}
+html.theme-cyberpunk .btn-primary:hover {
+  box-shadow: 0 0 24px rgba(0, 240, 255, 0.4);
+}
+
+html.theme-cyberpunk .btn-danger {
+  background: linear-gradient(135deg, #ff0055, #cc0044);
+  box-shadow: 0 0 15px rgba(255, 0, 85, 0.2);
+}
+
+html.theme-cyberpunk .btn-ghost {
+  background: rgba(0, 240, 255, 0.06);
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  color: #b8e8f0;
+}
+html.theme-cyberpunk .btn-ghost:hover {
+  background: rgba(0, 240, 255, 0.12);
+}
+
+html.theme-cyberpunk .input {
+  background: rgba(10, 3, 22, 0.8);
+  border-color: rgba(0, 240, 255, 0.15);
+  color: #d8ccf0;
+}
+html.theme-cyberpunk .input:focus {
+  border-color: #00f0ff;
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.15), 0 0 15px rgba(0, 240, 255, 0.1);
+}
+
+html.theme-cyberpunk .section-title {
+  color: #00f0ff;
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+}
+
+html.theme-cyberpunk .sidebar-title {
+  color: #e0d0ff;
+  text-shadow: 0 0 10px rgba(180, 120, 255, 0.3);
+}
+
+html.theme-cyberpunk thead tr {
+  background: rgba(10, 3, 25, 0.95);
+  border-color: rgba(0, 240, 255, 0.15);
+}
+html.theme-cyberpunk thead th {
+  color: #00f0ff;
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.25);
+}
+
+html.theme-cyberpunk tbody tr {
+  border-color: rgba(0, 240, 255, 0.06);
+}
+html.theme-cyberpunk tbody tr:hover {
+  background: rgba(0, 240, 255, 0.04);
+}
+
+html.theme-cyberpunk ::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.2);
+}
+
+/* Transfer card & context menu overrides */
+html.theme-cyberpunk .group:hover {
+  background: rgba(0, 240, 255, 0.06);
+}
+
+/* ═══════════════════════════════════════════
+   Theme: Sakura (少女之心)
+   ═══════════════════════════════════════════ */
+html.theme-sakura body {
+  background: linear-gradient(170deg, #fff5f7 0%, #ffe8ee 50%, #fff0f5 100%);
+  color: #5a3045;
+}
+
+html.theme-sakura .sidebar-panel {
+  background: rgba(255, 245, 248, 0.7);
+  border-color: rgba(255, 170, 190, 0.3);
+}
+
+html.theme-sakura .card {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 182, 200, 0.35);
+  box-shadow: 0 2px 12px rgba(255, 100, 150, 0.06);
+}
+
+html.theme-sakura .action-btn {
+  background: rgba(255, 228, 235, 0.6);
+  color: #8b4060;
+}
+html.theme-sakura .action-btn:hover {
+  background: rgba(255, 200, 215, 0.55);
+}
+
+html.theme-sakura .theme-active {
+  background: rgba(255, 130, 170, 0.12);
+  color: #e8457a;
+  --tw-ring-color: #ff6b8a;
+}
+
+html.theme-sakura .btn-primary {
+  background: linear-gradient(135deg, #ff7ea5, #ff5580);
+  box-shadow: 0 2px 10px rgba(255, 100, 140, 0.25);
+}
+html.theme-sakura .btn-primary:hover {
+  background: linear-gradient(135deg, #ff6b95, #ff4070);
+}
+
+html.theme-sakura .btn-danger {
+  background: linear-gradient(135deg, #ff5577, #e83355);
+  box-shadow: 0 2px 10px rgba(255, 60, 100, 0.2);
+}
+
+html.theme-sakura .btn-ghost {
+  background: rgba(255, 228, 238, 0.6);
+  color: #8b4060;
+}
+html.theme-sakura .btn-ghost:hover {
+  background: rgba(255, 210, 225, 0.7);
+}
+
+html.theme-sakura .input {
+  background: #fff;
+  border-color: rgba(255, 180, 200, 0.5);
+  color: #5a3045;
+}
+html.theme-sakura .input:focus {
+  border-color: #ff85a2;
+  box-shadow: 0 0 0 3px rgba(255, 107, 138, 0.15);
+}
+
+html.theme-sakura .section-title {
+  color: #d4708a;
+}
+
+html.theme-sakura .sidebar-title {
+  color: #9b4565;
+}
+
+html.theme-sakura thead tr {
+  background: rgba(255, 240, 245, 0.9);
+  border-color: rgba(255, 182, 200, 0.3);
+}
+html.theme-sakura thead th {
+  color: #c06080;
+}
+
+html.theme-sakura tbody tr {
+  border-color: rgba(255, 200, 215, 0.25);
+}
+html.theme-sakura tbody tr:hover {
+  background: rgba(255, 228, 238, 0.4);
+}
+
+html.theme-sakura ::-webkit-scrollbar-thumb {
+  background: rgba(255, 140, 170, 0.25);
+}
+
+/* Theme overrides for mobile tab bar */
+html.theme-cyberpunk .mobile-tabbar {
+  background: rgba(10, 3, 22, 0.9);
+  border-color: rgba(0, 240, 255, 0.1);
+}
+
+html.theme-sakura .mobile-tabbar {
+  background: rgba(255, 245, 248, 0.9);
+  border-color: rgba(255, 182, 200, 0.3);
+}
