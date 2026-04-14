@@ -3,7 +3,11 @@
     <!-- Header -->
     <div class="flex items-center justify-between mb-3 lg:mb-4 px-1">
       <h2 class="text-lg sm:text-xl font-bold">🃏 德州扑克筹码计分系统</h2>
-      <span class="text-xs text-gray-400 dark:text-gray-400 hidden sm:inline">tip: 右键/点击⋯打开操作菜单喵~</span>
+      <button
+        class="text-lg hover:scale-110 transition-transform cursor-pointer"
+        title="使用小贴士"
+        @click="showTip"
+      >💡</button>
     </div>
 
     <!-- Table -->
@@ -72,6 +76,7 @@
 <script setup>
 import { reactive, computed, onUnmounted } from 'vue'
 import { usePlayers } from '../../composables/usePlayers'
+import { useToast } from '../../composables/useToast'
 import PlayerRow from './PlayerRow.vue'
 import ContextMenu from '../common/ContextMenu.vue'
 import ChipModal from '../common/ChipModal.vue'
@@ -81,6 +86,16 @@ const {
   players, updatePlayerField, reorderPlayers,
   transferToPlayer, borrowChips, returnChips, removePlayer,
 } = usePlayers()
+
+// ── Tips ──
+const { addToast } = useToast()
+const tips = [
+  '右键玩家行也可打开操作菜单喵~',
+  '双击可直接修改玩家名、筹码数喵~',
+]
+function showTip() {
+  addToast(tips[Math.floor(Math.random() * tips.length)], 'info')
+}
 
 // ── Custom drag-to-reorder (mouse events, no HTML5 DnD) ──
 const drag = reactive({ active: false, fromIndex: -1, overIndex: -1 })

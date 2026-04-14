@@ -5,7 +5,7 @@
       <button
         v-for="item in themes"
         :key="item.value"
-        class="action-btn justify-center"
+        class="action-btn"
         :class="{ 'theme-active': theme === item.value }"
         @click="setTheme(item.value)"
       >{{ item.icon }} {{ item.label }}</button>

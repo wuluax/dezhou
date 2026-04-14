@@ -1,6 +1,7 @@
 <template>
   <div
     class="group relative px-3 py-2.5 rounded-xl bg-gray-50 dark:bg-gray-700/50
+           border border-gray-200 dark:border-gray-600/50
            hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
   >
     <p class="text-xs text-gray-400 dark:text-gray-500 tabular-nums">{{ timeStr }}</p>

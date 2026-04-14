@@ -49,9 +49,10 @@
     @apply text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-1.5;
   }
   .action-btn {
-    @apply flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium cursor-pointer
+    @apply flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium cursor-pointer
            bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700
-           text-gray-700 dark:text-gray-300 transition-all duration-200 select-none active:scale-[0.97];
+           border border-gray-200 dark:border-gray-600/50
+           text-gray-700 dark:text-gray-300 transition-all duration-200 select-none active:scale-[0.97] whitespace-nowrap;
   }
   .theme-active {
     @apply ring-2 ring-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400;
@@ -185,10 +186,34 @@ html.theme-cyberpunk thead th {
 
 html.theme-cyberpunk tbody tr {
   border-color: rgba(0, 240, 255, 0.06);
+  background: rgba(10, 3, 25, 0.6);
+}
+html.theme-cyberpunk tbody tr:nth-child(even) {
+  background: rgba(0, 240, 255, 0.03);
 }
 html.theme-cyberpunk tbody tr:hover {
+  background: rgba(0, 240, 255, 0.08);
+}
+
+/* 筹码颜色 - 霓虹风格 */
+html.theme-cyberpunk .text-green-400 { color: #00ffaa; text-shadow: 0 0 8px rgba(0, 255, 170, 0.3); }
+html.theme-cyberpunk .text-green-600 { color: #00ffaa; }
+html.theme-cyberpunk .text-red-400 { color: #ff3366; text-shadow: 0 0 8px rgba(255, 51, 102, 0.3); }
+html.theme-cyberpunk .text-red-500 { color: #ff3366; }
+
+/* 转移记录卡片 & 更新日志卡片 */
+html.theme-cyberpunk .bg-gray-50 {
   background: rgba(0, 240, 255, 0.04);
 }
+html.theme-cyberpunk .bg-gray-100 {
+  background: rgba(0, 240, 255, 0.06);
+}
+
+/* 通用文本颜色覆盖 */
+html.theme-cyberpunk .text-gray-700 { color: #b8e8f0; }
+html.theme-cyberpunk .text-gray-600 { color: #90c0d0; }
+html.theme-cyberpunk .text-gray-500 { color: #708898; }
+html.theme-cyberpunk .text-gray-400 { color: #507080; }
 
 html.theme-cyberpunk ::-webkit-scrollbar-thumb {
   background: rgba(0, 240, 255, 0.2);
@@ -196,7 +221,19 @@ html.theme-cyberpunk ::-webkit-scrollbar-thumb {
 
 /* Transfer card & context menu overrides */
 html.theme-cyberpunk .group:hover {
-  background: rgba(0, 240, 255, 0.06);
+  background: rgba(0, 240, 255, 0.08);
+}
+
+/* 右键菜单 */
+html.theme-cyberpunk .min-w-\[180px\] {
+  background: rgba(10, 3, 25, 0.95);
+  border-color: rgba(0, 240, 255, 0.15);
+}
+
+/* 标题霓虹光效 */
+html.theme-cyberpunk h2.font-bold {
+  color: #e0d0ff;
+  text-shadow: 0 0 12px rgba(180, 120, 255, 0.25);
 }
 
 /* ═══════════════════════════════════════════
@@ -220,10 +257,15 @@ html.theme-sakura .card {
 
 html.theme-sakura .action-btn {
   background: rgba(255, 228, 235, 0.6);
+  border-color: rgba(255, 182, 200, 0.4);
   color: #8b4060;
 }
 html.theme-sakura .action-btn:hover {
   background: rgba(255, 200, 215, 0.55);
+}
+
+html.theme-sakura .bg-gray-50 {
+  background: rgba(255, 240, 245, 0.6);
 }
 
 html.theme-sakura .theme-active {
@@ -281,9 +323,13 @@ html.theme-sakura thead th {
 
 html.theme-sakura tbody tr {
   border-color: rgba(255, 200, 215, 0.25);
+  background: rgba(255, 240, 245, 0.5);
+}
+html.theme-sakura tbody tr:nth-child(even) {
+  background: rgba(255, 228, 238, 0.45);
 }
 html.theme-sakura tbody tr:hover {
-  background: rgba(255, 228, 238, 0.4);
+  background: rgba(255, 215, 228, 0.6);
 }
 
 html.theme-sakura ::-webkit-scrollbar-thumb {
